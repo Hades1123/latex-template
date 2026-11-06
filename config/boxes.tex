@@ -1,0 +1,22 @@
+% Khung trình bày dành cho báo cáo phân tích tình huống
+\tcbuselibrary{breakable,skins}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,fit}
+
+% Nhận định của nhóm — tách biệt với bằng chứng (yêu cầu mục 4 của đề bài)
+\newtcolorbox{nhandinh}[1][Nhận định của nhóm]{%
+  enhanced, breakable,
+  colback=blue!4!white, colframe=blue!50!black,
+  boxrule=0.6pt, arc=1mm,
+  left=2mm, right=2mm, top=1mm, bottom=1mm,
+fonttitle=\bfseries\small, title=#1}
+
+% Trích dẫn phát biểu nguyên văn
+\newtcolorbox{trichdan}{%
+  enhanced, breakable,
+  colback=gray!6, colframe=gray!55,
+  boxrule=0pt, leftrule=3pt, sharp corners,
+  left=3mm, right=2mm, top=1mm, bottom=1mm,
+fontupper=\itshape}
+
+% Bảng: giãn dòng, chữ nhỏ hơn thân bài
+\newcommand{\bangnho}{\small\renewcommand{\arraystretch}{1.3}}

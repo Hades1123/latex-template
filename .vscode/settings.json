@@ -1,0 +1,12 @@
+{
+  // Format LaTeX bằng tex-fmt (cấu hình ở tex-fmt.toml, tự tìm theo git root).
+  // Mặc định LaTeX Workshop truyền "--nowrap" → ghi đè bằng [] để bật xuống dòng.
+  "latex-workshop.formatting.latex": "tex-fmt",
+  "latex-workshop.formatting.tex-fmt.args": [],
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.rulers": [100]
+  }
+}

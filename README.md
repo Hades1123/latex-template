@@ -18,6 +18,26 @@ latexmk -C            # dọn file trung gian
 
 Trong VS Code: cài extension **LaTeX Workshop**, mở `main.tex`, Ctrl+S để tự build.
 
+## Cài `tex-fmt` (formatter, tùy chọn)
+
+`tex-fmt` dùng để căn lề và ngắt dòng file `.tex` theo `tex-fmt.toml` (tối đa 100 ký tự/dòng,
+thụt lề 2 dấu cách). Cần cài riêng, chọn một cách phù hợp:
+
+| Hệ điều hành | Lệnh |
+|---|---|
+| Linux / macOS / Windows (có Rust) | `cargo install tex-fmt` |
+| macOS (Homebrew) | `brew install tex-fmt` |
+| Arch Linux | `sudo pacman -S tex-fmt` |
+| Nix | `nix-env -iA nixpkgs.tex-fmt` |
+| Windows / mọi hệ điều hành | Tải file build sẵn ở trang Releases: https://github.com/WGUNDERWOOD/tex-fmt/releases rồi đặt vào thư mục có trong `PATH` |
+
+Kiểm tra: `tex-fmt --version`. Cách dùng:
+
+```bash
+tex-fmt <file.tex>                                              # một file
+find . -name '*.tex' -not -path './build/*' -exec tex-fmt {} +  # toàn bộ
+```
+
 ## Cấu trúc
 
 | Đường dẫn | Vai trò |
