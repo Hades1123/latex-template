@@ -1,0 +1,17 @@
+/build/
+
+# File trung gian nếu lỡ biên dịch không qua .latexmkrc
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.out
+*.toc
+*.run.xml
+*.synctex.gz
+/main.pdf

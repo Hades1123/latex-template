@@ -1,0 +1,49 @@
+% Macro dùng chung cho các bảng đặc tả use case (longtable).
+% Có thể bỏ file này (và dòng \input trong main.tex) nếu báo cáo không có use case.
+
+% Đánh dấu điểm nghiệp vụ chưa chốt, hiển thị màu đỏ
+\newcommand{\chuachot}[1]{\textcolor{red}{[Chưa chốt: #1]}}
+
+% Một dòng của bảng: nhãn (tô nền xám) và nội dung
+\newcommand{\ucrow}[2]{\cellcolor{gray!15}\textbf{#1} & #2 \\ \hline}
+
+% Danh sách các bước: nhãn căn trái, dùng \st{1.}, \st{2a.}, \st{BR1.}
+\newcommand{\ucmakelabel}[1]{#1\hfil}
+\newenvironment{ucsteps}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{1.4cm}%
+    \setlength{\labelwidth}{1.3cm}%
+    \setlength{\labelsep}{0.1cm}%
+    \setlength{\itemsep}{1pt}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \let\makelabel\ucmakelabel}}{\end{list}}
+\newcommand{\st}[1]{\item[#1]}
+
+% Ba sơ đồ của một use case: hoạt động (activity), lớp (class), tuần tự (sequence).
+% Sơ đồ lớp chỉ được chèn khi file <id>-class.png tồn tại.
+% Dùng:  \ucdiagrams[thư-mục-ảnh]{id}{Mã UC}{Tên UC}
+% Ảnh: <thư-mục-ảnh>/<id>-{activity,class,sequence}.png
+\newcommand{\ucfigure}[5]{%
+  \begin{figure}[H]
+    \centering
+    \caption{#2 use case #3: #4}
+    \label{#5}
+    \includegraphics[width=0.9\linewidth,height=0.75\textheight,keepaspectratio]{#1}
+  \end{figure}}
+\newcommand{\ucdiagrams}[4][content/chapter2/diagrams]{%
+  \ucfigure{#1/#2-activity.png}{Sơ đồ hoạt động}{#3}{#4}{fig:#2-activity}
+  \IfFileExists{#1/#2-class.png}{\ucfigure{#1/#2-class.png}{Sơ đồ lớp}{#3}{#4}{fig:#2-class}}{}%
+  \ucfigure{#1/#2-sequence.png}{Sơ đồ tuần tự}{#3}{#4}{fig:#2-sequence}}
+
+% Bảng đặc tả use case: \begin{ucspec}{Mã}{Tên} ... \ucrow ... \end{ucspec}
+% (khung longtable 2 cột, nhãn rộng 3.4cm, tự lặp tiêu đề khi qua trang)
+\newenvironment{ucspec}[2]{%
+  \begin{longtable}{|p{3.4cm}|p{\dimexpr\linewidth-3.4cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+  \caption{Đặc tả use case #1: #2}\label{tab:#1}\\
+  \hline
+  \endfirsthead
+  \multicolumn{2}{l}{\small\itshape Bảng \thetable\ (tiếp theo)}\\
+  \hline
+  \endhead}{\end{longtable}}

@@ -1,0 +1,27 @@
+% Header (logo + tên trường/khoa) và footer (loại báo cáo, niên khóa, số trang)
+\setlength{\headheight}{36.5pt}
+
+\newcommand{\hfcommon}{%
+  \fancyhead{}
+  \fancyhead[L]{%
+    \begin{tabular}{rl}
+      \begin{picture}(25,15)(0,0)
+        \put(0,-8){\includegraphics[width=10mm, height=10mm]{pictures/logobk.png}}
+      \end{picture}&
+      \begin{tabular}{l}
+        \textbf{\ttfamily \TenTruongHeader}\\
+        \textbf{\ttfamily \TenKhoa}
+      \end{tabular}
+    \end{tabular}}
+  \fancyfoot{}
+  \fancyfoot[L]{\scriptsize \ttfamily \LoaiBaoCao \\ \ttfamily \NienKhoa}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}}
+
+% Phần đầu báo cáo (mục lục, danh mục): chỉ ghi số trang La Mã
+\fancypagestyle{frontmatter}{\hfcommon\fancyfoot[R]{\scriptsize \ttfamily Trang \thepage}}
+
+% Phần nội dung chính: "Trang x/N" (N = tổng số trang nội dung)
+\fancypagestyle{mainmatter}{\hfcommon\fancyfoot[R]{\scriptsize \ttfamily Trang \thepage/\pageref{LastPage}}}
+
+\pagestyle{frontmatter}

@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt]{article}
+
+% ---- Cấu hình (thứ tự quan trọng) ----------------------------------
+\input{config/packages}
+\input{config/metadata}   % <- sửa thông tin báo cáo ở đây
+\input{config/format}
+\input{config/section}
+\input{config/code}
+\input{config/usecase}
+\input{partials/header_footer}
+
+\begin{document}
+
+% ---- Bìa và phần mở đầu --------------------------------------------
+\input{partials/title}
+\newpage
+\pagenumbering{roman}
+
+\input{intro/LoiCamOn}
+\input{intro/LoiCamDoan}
+\input{intro/TomTat}
+
+\tableofcontents
+\clearpage
+\listoftables
+\clearpage
+\listoffigures
+\clearpage
+
+% ---- Nội dung chính -------------------------------------------------
+\pagenumbering{arabic}
+\pagestyle{mainmatter}
+
+\input{content/chapter1/GioiThieu}
+\newpage
+\input{content/chapter2/CoSoLyThuyet}
+\newpage
+\input{content/chapter3/ThietKe}
+\newpage
+\input{content/chapter4/CaiDatVaDanhGia}
+\newpage
+\input{content/chapter5/TongKet}
+
+% ---- Tài liệu tham khảo --------------------------------------------
+\newpage
+\printbibliography[heading=bibintoc, title={Tài liệu tham khảo}]
+
+% ---- Phụ lục (tùy chọn) --------------------------------------------
+% \appendix
+% \input{content/appendix/PhuLuc}
+
+\end{document}

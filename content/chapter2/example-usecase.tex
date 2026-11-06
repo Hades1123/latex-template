@@ -1,0 +1,27 @@
+% Ví dụ một bảng đặc tả use case dùng macro trong config/usecase.tex
+\begin{ucspec}{UC-01}{Đăng nhập}
+\ucrow{Mã UC}{UC-01}
+\ucrow{Tên UC}{Đăng nhập}
+\ucrow{Mô tả}{Là người dùng, tôi muốn đăng nhập vào hệ thống để sử dụng các chức năng dành cho thành viên.}
+\ucrow{Actor}{Guest}
+\ucrow{Pre-Condition}{Người dùng chưa đăng nhập.}
+\ucrow{Post-Condition}{Hệ thống tạo phiên đăng nhập.}
+\ucrow{Basic Flow}{%
+\begin{ucsteps}
+\st{1.} Người dùng chọn Đăng nhập.
+\st{2.} Hệ thống hiển thị biểu mẫu.
+\st{3.} Người dùng nhập thông tin và xác nhận.
+\st{4.} Hệ thống xác thực và tạo phiên đăng nhập.
+\end{ucsteps}}
+\ucrow{Alternative Flow}{%
+\begin{ucsteps}
+\st{4a.} Thông tin sai: hệ thống báo lỗi và quay lại bước 2.
+\end{ucsteps}}
+\ucrow{Business Rule}{%
+\begin{ucsteps}
+\st{BR1.} Quy tắc nghiệp vụ \chuachot{ví dụ điểm chưa chốt}.
+\end{ucsteps}}
+\end{ucspec}
+
+% Chèn bộ ba sơ đồ activity/class/sequence (cần có ảnh trong thư mục diagrams):
+% \ucdiagrams{uc-01}{UC-01}{Đăng nhập}
